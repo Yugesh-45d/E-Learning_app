@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:e_learning_app/utils/colors.dart';
-import 'package:e_learning_app/utils/fonts.dart';
-import 'package:e_learning_app/utils/func.dart';
+import 'package:e_learning_app/screens/login_pages/login_screen.dart';
+import 'package:e_learning_app/config/app_colors.dart';
+import 'package:e_learning_app/config/app_fonts.dart';
+import 'package:e_learning_app/config/func.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -11,6 +12,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -35,7 +37,10 @@ class OnboardingScreen extends StatelessWidget {
               SizedBox(height: 32),
               myButton(
                   text: "Start Learning",
-                  func: () {},
+                  func: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
                   borderRadius: 32,
                   width: 320),
             ],

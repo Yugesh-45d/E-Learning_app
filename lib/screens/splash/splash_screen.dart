@@ -3,9 +3,9 @@
 import 'dart:async';
 
 import 'package:e_learning_app/screens/welcome_pages/onboarding_screen.dart';
-import 'package:e_learning_app/utils/colors.dart';
-import 'package:e_learning_app/utils/fonts.dart';
-import 'package:e_learning_app/utils/func.dart';
+import 'package:e_learning_app/config/app_colors.dart';
+import 'package:e_learning_app/config/app_fonts.dart';
+import 'package:e_learning_app/config/func.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:e_learning_app/utils/colors.dart';
-import 'package:e_learning_app/utils/fonts.dart';
+import 'package:e_learning_app/config/app_colors.dart';
+import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 //----------------------------For Normal Text---------------------------------------------
