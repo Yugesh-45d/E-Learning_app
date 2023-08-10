@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_learning_app/utils/colors.dart';
 import 'package:e_learning_app/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,9 @@ Text myText({
   double size = 16,
   FontWeight weight = FontWeight.normal,
   TextAlign alignment = TextAlign.center,
-  required String font,
+  String? font,
 }) {
+  String fontFamily = font ?? AppFonts.secondaryFont;
   return Text(
     text,
     textAlign: alignment,
@@ -19,9 +21,8 @@ Text myText({
       color: color,
       fontSize: size,
       fontWeight: weight,
-      fontFamily: font,
+      fontFamily: fontFamily,
     ),
-    // style: GoogleFonts.getFont('Balsamiq Sans'),
   );
 }
 
@@ -46,11 +47,14 @@ EdgeInsets myPadding(
 SizedBox myButton(
     {required String text,
     bool isFilled = true,
-    Color color = Colors.red,
+    Color color = AppColors.primaryColor,
+    double borderRadius = 16,
+    double width = double.maxFinite,
+    double height = 52,
     required void Function() func}) {
   return SizedBox(
-    height: 52,
-    width: double.maxFinite,
+    height: height,
+    width: width,
     child: TextButton(
       style: TextButton.styleFrom(
         elevation: 8,
@@ -60,7 +64,7 @@ SizedBox myButton(
             color: Colors.white,
             width: 1),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
       ),
       onPressed: () {
@@ -70,7 +74,6 @@ SizedBox myButton(
         text: text,
         weight: FontWeight.bold,
         size: 18,
-        font: AppFonts.secondaryFont,
       ),
     ),
   );
