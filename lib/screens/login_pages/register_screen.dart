@@ -1,20 +1,20 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:e_learning_app/screens/login_pages/register_screen.dart';
+import 'package:e_learning_app/screens/login_pages/login_screen.dart';
 import 'package:e_learning_app/screens/main_pages/select_course_screen.dart';
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/func.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool showPassword = false;
   bool checkboxValue = false;
   @override
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               myText(
-                text: "LOG IN",
+                text: "REGISTER",
                 color: AppColors.primaryColor,
                 weight: FontWeight.bold,
                 size: 24,
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 40),
               myText(
-                text: "Enter your log in details to access your account",
+                text: "Input Email and Password to Continue the registration.",
                 color: AppColors.primaryColor,
                 weight: FontWeight.bold,
                 size: 20,
@@ -86,37 +86,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 showPassword: showPassword,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: checkboxValue,
-                        onChanged: (value) {
-                          setState(() {
-                            checkboxValue = value!;
-                          });
-                        },
-                      ),
-                      myText(
-                        text: "Remember me?",
-                        font: AppFonts.thirdFont,
-                        size: 16,
-                        color: AppColors.primaryColor,
-                      ),
-                    ],
+                  Checkbox(
+                    value: checkboxValue,
+                    onChanged: (value) {
+                      setState(() {
+                        checkboxValue = value!;
+                      });
+                    },
                   ),
                   myText(
-                    text: "Forget Password?",
-                    color: Colors.red,
-                    size: 16,
+                    text: "Remember me?",
                     font: AppFonts.thirdFont,
+                    size: 16,
+                    color: AppColors.primaryColor,
                   ),
                 ],
               ),
               SizedBox(height: 24),
               myButton(
-                text: "Login",
+                text: "Register",
                 func: () {
                   Navigator.pushReplacement(
                       context,
@@ -129,25 +118,28 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 40),
               Text.rich(
                 TextSpan(
-                  text: "Don't have an account? ",
+                  text: "Already have an account? ",
                   style: TextStyle(
                     color: AppColors.primaryColor,
                     fontFamily: AppFonts.thirdFont,
                   ),
                   children: [
                     WidgetSpan(
-                        child: GestureDetector(
-                      onTap: () {
-                         Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: ((context) => RegisterScreen())));
-                      },
-                      child: myText(
-                        text: "Create account",
-                        color: Colors.blue,
-                        font: AppFonts.thirdFont,
-                        size: 14,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => LoginScreen())));
+                        },
+                        child: myText(
+                          text: "Login",
+                          color: Colors.blue,
+                          font: AppFonts.thirdFont,
+                          size: 14,
+                        ),
                       ),
-                    ))
+                    ),
                   ],
                 ),
               ),

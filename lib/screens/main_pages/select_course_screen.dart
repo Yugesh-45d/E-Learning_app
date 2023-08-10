@@ -44,38 +44,10 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
               ),
               Row(
                 children: [
+                  //TODO complete this chip widget
                   ChoiceChip(
-                    // avatar: myLocalImage(image: "4.png"),
                     label: myText(
                       text: "Begineer",
-                      color: AppColors.primaryColor,
-                      font: AppFonts.thirdFont,
-                    ),
-                    selected: isSelected,
-                    onSelected: (value) {
-                      setState(() {
-                        isSelected = value;
-                      });
-                    },
-                  ),
-                  ChoiceChip(
-                    // avatar: myLocalImage(image: "1.png"),
-                    label: myText(
-                      text: "Intermediate",
-                      color: AppColors.primaryColor,
-                      font: AppFonts.thirdFont,
-                    ),
-                    selected: isSelected,
-                    onSelected: (value) {
-                      setState(() {
-                        isSelected = value;
-                      });
-                    },
-                  ),
-                  ChoiceChip(
-                    // avatar: myLocalImage(image: "2.png"),
-                    label: myText(
-                      text: "Expert",
                       color: AppColors.primaryColor,
                       font: AppFonts.thirdFont,
                     ),

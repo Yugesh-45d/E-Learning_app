@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:e_learning_app/screens/login_pages/login_screen.dart';
-import 'package:e_learning_app/screens/main_pages/select_course_screen.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,9 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: SplashScreen(),
-      // home: LoginScreen(),
-      home: SelectCourseScreen(),
+      home: SplashScreen(),
     );
   }
 }
