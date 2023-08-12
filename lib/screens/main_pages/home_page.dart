@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          AppFunc.mySizedbox(height: 40),
           AppFunc.myText(
             text: "HOME",
             color: AppColors.primaryColor,

@@ -229,4 +229,71 @@ class AppFunc {
       ),
     );
   }
+
+//----------------------------For Classes Card Widget---------------------------------------------
+
+  static Card myClassesCard({
+    required String image,
+    required String subject,
+    required String topic,
+    required double progress,
+  }) {
+    return Card(
+      color: AppColors.backgroundColor,
+      elevation: 2,
+      child: Padding(
+        padding: AppFunc.myPadding(),
+        child: Row(
+          children: [
+            Image.asset(
+              "assets/$image",
+              height: 96.h,
+              width: 96.w,
+            ),
+            AppFunc.mySizedbox(width: 12),
+            Column(
+              children: [
+                SizedBox(
+                  width: 168.w,
+                  child: AppFunc.myText(
+                    alignment: TextAlign.left,
+                    text: subject,
+                    size: 20,
+                    color: AppColors.primaryColor,
+                    font: AppFonts.thirdFont,
+                  ),
+                ),
+                SizedBox(
+                  width: 168.w,
+                  child: AppFunc.myText(
+                    alignment: TextAlign.left,
+                    text: topic,
+                    size: 20,
+                    color: AppColors.primaryColor,
+                    font: AppFonts.primaryFont,
+                  ),
+                ),
+                AppFunc.mySizedbox(height: 8),
+                SizedBox(
+                  width: 168.w,
+                  child: AppFunc.myText(
+                    alignment: TextAlign.left,
+                    text: "$progress% Completed",
+                    color: AppColors.primaryColor,
+                    font: AppFonts.primaryFont,
+                  ),
+                ),
+                SizedBox(
+                  width: 168.w,
+                  child: LinearProgressIndicator(
+                    value: progress / 100,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

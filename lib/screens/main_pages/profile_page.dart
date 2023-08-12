@@ -17,6 +17,7 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          AppFunc.mySizedbox(height: 40),
           AppFunc.myText(
             text: "MY ACCOUNT",
             color: AppColors.primaryColor,
