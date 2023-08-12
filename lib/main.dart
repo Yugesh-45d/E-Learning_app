@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:e_learning_app/screens/login_pages/login_screen.dart';
-import 'package:e_learning_app/screens/login_pages/register_screen.dart';
+import 'package:e_learning_app/screens/main_pages/main_page.dart';
 import 'package:e_learning_app/screens/main_pages/select_course_screen.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
-import 'package:e_learning_app/screens/welcome_pages/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,12 +29,15 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // home: SplashScreen(),
-        home: SelectCourseScreen(),
+        // home: SelectCourseScreen(),
         // home: OnboardingScreen(),
+        home: MainPage(),
       ),
     );
   }
 }
 
+//Put const in necessary places
 //Login Page
 //Register Page
+//Select Course Screen

@@ -140,10 +140,74 @@ class AppFunc {
     );
   }
 
+//----------------------------For Sizedbox---------------------------------------------
   static SizedBox mySizedbox({double height = 0, double width = 0}) {
     return SizedBox(
       height: height.h,
       width: width.w,
+    );
+  }
+
+//----------------------------For Card Widget---------------------------------------------
+  static Card myCard({
+    required String image,
+    required String faculty,
+    required String subject,
+    required int hours,
+    double cardWidth = 224,
+    double imageHeight = 144,
+    double facultytextSize = 20,
+    double subjecttextSize = 24,
+    double hoursTextSize = 16,
+  }) {
+    return Card(
+      color: AppColors.backgroundColor,
+      elevation: 4,
+      child: Padding(
+        padding: AppFunc.myPadding(),
+        child: Column(
+          children: [
+            SizedBox(
+              child: AppFunc.myLocalImage(
+                image: image,
+                height: imageHeight,
+              ),
+            ),
+            AppFunc.mySizedbox(height: 8),
+            SizedBox(
+              width: cardWidth.w,
+              child: AppFunc.myText(
+                alignment: TextAlign.left,
+                text: faculty,
+                size: facultytextSize,
+                color: AppColors.primaryColor,
+                font: AppFonts.thirdFont,
+              ),
+            ),
+            AppFunc.mySizedbox(height: 8),
+            SizedBox(
+              width: cardWidth.w,
+              child: AppFunc.myText(
+                alignment: TextAlign.left,
+                text: subject,
+                size: subjecttextSize,
+                color: AppColors.primaryColor,
+                font: AppFonts.primaryFont,
+              ),
+            ),
+            AppFunc.mySizedbox(height: 8),
+            SizedBox(
+              width: cardWidth.w,
+              child: AppFunc.myText(
+                alignment: TextAlign.left,
+                text: "$hours hours",
+                size: hoursTextSize,
+                color: AppColors.primaryColor,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
