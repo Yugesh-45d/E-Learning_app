@@ -2,6 +2,7 @@
 
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -207,6 +208,24 @@ class AppFunc {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+//----------------------------For Cupertino ListTile---------------------------------------------
+
+  static CupertinoListTile myListCupertinoListTile({required String text}) {
+    return CupertinoListTile(
+      title: AppFunc.myText(
+        text: text,
+        font: AppFonts.thirdFont,
+        size: 20,
+        color: AppColors.primaryColor,
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        color: AppColors.primaryColor,
+        size: 20,
       ),
     );
   }

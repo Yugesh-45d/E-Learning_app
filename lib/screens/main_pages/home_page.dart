@@ -4,7 +4,6 @@ import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/helper_func.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,14 +16,14 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AppFunc.myText(
-            text: "Home",
+            text: "HOME",
             color: AppColors.primaryColor,
             weight: FontWeight.bold,
-            size: 24,
+            size: 20,
           ),
-          AppFunc.mySizedbox(height: 16),
+          AppFunc.mySizedbox(height: 8),
           AppFunc.myText(
-            text: "Welcome Back Jackson Mercer",
+            text: "Welcome Back Rameshwor Yadav",
             color: AppColors.primaryColor,
             weight: FontWeight.bold,
             font: AppFonts.primaryFont,
