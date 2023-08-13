@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_learning_app/screens/main_pages/book_class_screen.dart';
 import 'package:e_learning_app/screens/main_pages/main_page.dart';
-import 'package:e_learning_app/screens/main_pages/select_course_screen.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,9 +29,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // home: SplashScreen(),
-        // home: SelectCourseScreen(),
-        // home: OnboardingScreen(),
-        home: MainPage(),
+        home: BookClassScreen(),
+        // home: MainPage(),
       ),
     );
   }

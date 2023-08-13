@@ -41,6 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
 //TODO add user authentication here with Firebase
+//TODO ask name, address and profile picture here
 
   @override
   Widget build(BuildContext context) {
@@ -145,3 +146,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
+//TODO ask name, address and profile picture here

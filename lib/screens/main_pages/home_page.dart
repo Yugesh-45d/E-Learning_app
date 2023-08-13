@@ -3,6 +3,7 @@
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/helper_func.dart';
+import 'package:e_learning_app/screens/main_pages/book_class_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -36,7 +37,12 @@ class HomePage extends StatelessWidget {
               AppFunc.myButton(
                 text: "Book Class",
                 textSize: 16,
-                func: () {},
+                func: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => BookClassScreen())));
+                },
                 //TODO add functionality here
                 width: 120,
                 height: 40,

@@ -160,6 +160,9 @@ class AppFunc {
     double facultytextSize = 20,
     double subjecttextSize = 24,
     double hoursTextSize = 16,
+    bool showFaculty = true,
+    bool showSubject = true,
+    bool showHours = true,
   }) {
     return Card(
       color: AppColors.backgroundColor,
@@ -174,38 +177,53 @@ class AppFunc {
                 height: imageHeight,
               ),
             ),
-            AppFunc.mySizedbox(height: 8),
-            SizedBox(
-              width: cardWidth.w,
-              child: AppFunc.myText(
-                alignment: TextAlign.left,
-                text: faculty,
-                size: facultytextSize,
-                color: AppColors.primaryColor,
-                font: AppFonts.thirdFont,
+            if (showFaculty)
+              Column(
+                children: [
+                  AppFunc.mySizedbox(height: 8),
+                  SizedBox(
+                    width: cardWidth.w,
+                    child: AppFunc.myText(
+                      alignment: TextAlign.left,
+                      text: faculty,
+                      size: facultytextSize,
+                      color: AppColors.primaryColor,
+                      font: AppFonts.thirdFont,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            AppFunc.mySizedbox(height: 8),
-            SizedBox(
-              width: cardWidth.w,
-              child: AppFunc.myText(
-                alignment: TextAlign.left,
-                text: subject,
-                size: subjecttextSize,
-                color: AppColors.primaryColor,
-                font: AppFonts.primaryFont,
+            if (showSubject)
+              Column(
+                children: [
+                  AppFunc.mySizedbox(height: 8),
+                  SizedBox(
+                    width: cardWidth.w,
+                    child: AppFunc.myText(
+                      alignment: TextAlign.left,
+                      text: subject,
+                      size: subjecttextSize,
+                      color: AppColors.primaryColor,
+                      font: AppFonts.primaryFont,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            AppFunc.mySizedbox(height: 8),
-            SizedBox(
-              width: cardWidth.w,
-              child: AppFunc.myText(
-                alignment: TextAlign.left,
-                text: "$hours hours",
-                size: hoursTextSize,
-                color: AppColors.primaryColor,
+            if (showHours)
+              Column(
+                children: [
+                  AppFunc.mySizedbox(height: 8),
+                  SizedBox(
+                    width: cardWidth.w,
+                    child: AppFunc.myText(
+                      alignment: TextAlign.left,
+                      text: "$hours hours",
+                      size: hoursTextSize,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ],
               ),
-            ),
           ],
         ),
       ),
@@ -293,6 +311,44 @@ class AppFunc {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+//----------------------------For DropDownMenu Widget---------------------------------------------
+  static Container myDropDownMenu(
+      {required List<String> textList,
+      required String dropDownValue,
+      required void Function(String? value) func}) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(2.r),
+        color: AppColors.primaryColor,
+      ),
+      height: 40.h,
+      width: 144.w,
+      alignment: Alignment.center,
+      child: DropdownButton<String>(
+        underline: Container(
+          height: 2.h,
+          color: Colors.transparent,
+        ),
+        dropdownColor: AppColors.primaryColor,
+        value: dropDownValue,
+        iconEnabledColor: Colors.white,
+        items: textList
+            .map<DropdownMenuItem<String>>(
+              (e) => DropdownMenuItem(
+                value: e,
+                child: AppFunc.myText(
+                  text: e,
+                  size: 16,
+                  font: AppFonts.thirdFont,
+                ),
+              ),
+            )
+            .toList(),
+        onChanged: func,
       ),
     );
   }

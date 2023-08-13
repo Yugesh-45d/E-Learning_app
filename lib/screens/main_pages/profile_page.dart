@@ -3,6 +3,7 @@
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/helper_func.dart';
+import 'package:e_learning_app/screens/login_pages/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,7 +75,10 @@ class ProfilePage extends StatelessWidget {
             width: 280,
             borderRadius: 32,
             text: "Log Out",
-            func: () {},
+            func: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: ((context) => LoginScreen())));
+            },
             //TODO Add Functionality Here
           ),
         ],
