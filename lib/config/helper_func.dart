@@ -163,10 +163,18 @@ class AppFunc {
     bool showFaculty = true,
     bool showSubject = true,
     bool showHours = true,
+    bool showBorder = false,
   }) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: showBorder ? AppColors.primaryColor : Colors.transparent,
+          width: 2,
+        ),
+      ),
       color: AppColors.backgroundColor,
-      elevation: 4,
+      elevation: 2,
       child: Padding(
         padding: AppFunc.myPadding(),
         child: Column(
@@ -252,8 +260,8 @@ class AppFunc {
 
   static Card myClassesCard({
     required String image,
+    required String faculty,
     required String subject,
-    required String topic,
     required double progress,
   }) {
     return Card(
@@ -275,7 +283,7 @@ class AppFunc {
                   width: 168.w,
                   child: AppFunc.myText(
                     alignment: TextAlign.left,
-                    text: subject,
+                    text: faculty,
                     size: 20,
                     color: AppColors.primaryColor,
                     font: AppFonts.thirdFont,
@@ -285,7 +293,7 @@ class AppFunc {
                   width: 168.w,
                   child: AppFunc.myText(
                     alignment: TextAlign.left,
-                    text: topic,
+                    text: subject,
                     size: 20,
                     color: AppColors.primaryColor,
                     font: AppFonts.primaryFont,
@@ -311,44 +319,6 @@ class AppFunc {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-//----------------------------For DropDownMenu Widget---------------------------------------------
-  static Container myDropDownMenu(
-      {required List<String> textList,
-      required String dropDownValue,
-      required void Function(String? value) func}) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2.r),
-        color: AppColors.primaryColor,
-      ),
-      height: 40.h,
-      width: 144.w,
-      alignment: Alignment.center,
-      child: DropdownButton<String>(
-        underline: Container(
-          height: 2.h,
-          color: Colors.transparent,
-        ),
-        dropdownColor: AppColors.primaryColor,
-        value: dropDownValue,
-        iconEnabledColor: Colors.white,
-        items: textList
-            .map<DropdownMenuItem<String>>(
-              (e) => DropdownMenuItem(
-                value: e,
-                child: AppFunc.myText(
-                  text: e,
-                  size: 16,
-                  font: AppFonts.thirdFont,
-                ),
-              ),
-            )
-            .toList(),
-        onChanged: func,
       ),
     );
   }

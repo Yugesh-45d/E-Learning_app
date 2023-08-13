@@ -7,6 +7,7 @@ import 'package:e_learning_app/screens/login_pages/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -76,10 +77,11 @@ class ProfilePage extends StatelessWidget {
             borderRadius: 32,
             text: "Log Out",
             func: () {
+              Fluttertoast.showToast(
+                  msg: "Logged out", backgroundColor: Colors.redAccent);
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: ((context) => LoginScreen())));
             },
-            //TODO Add Functionality Here
           ),
         ],
       ),
