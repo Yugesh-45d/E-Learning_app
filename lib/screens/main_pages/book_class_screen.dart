@@ -251,7 +251,6 @@ class _BookClassScreenState extends State<BookClassScreen> {
                   },
                 ),
                 AppFunc.myText(
-                  //TODO add remember me functionality
                   text: "Are you sure with selected Class?",
                   font: AppFonts.thirdFont,
                   size: 16,
@@ -263,7 +262,12 @@ class _BookClassScreenState extends State<BookClassScreen> {
               width: 280,
               borderRadius: 32,
               text: "Book Class Now",
-              func: () {},
+              func: () {
+                if (checkboxValue) {
+                  Navigator.pop(context);
+                }
+              },
+              //TODO add more functionality here
             ),
           ],
         ),
