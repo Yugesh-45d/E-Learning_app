@@ -2,8 +2,6 @@
 
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/providers/booking_provider.dart';
-import 'package:e_learning_app/screens/login_pages/register_screen.dart';
-import 'package:e_learning_app/screens/main_pages/main_page.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,17 +37,9 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
             useMaterial3: true,
           ),
-          // home: SplashScreen(),
-          home: RegisterScreen(),
-          // home: MainPage(),
-          // home: Practice(),
+          home: SplashScreen(),
         ),
       ),
     );
   }
 }
-
-//Put const in necessary places
-//Login Page
-//Register Page
-//Select Course Screen

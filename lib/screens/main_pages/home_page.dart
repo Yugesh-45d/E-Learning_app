@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
               AppFunc.myButton(
                 text: "Book Class",
                 textSize: 16,
-                func: () async{
+                func: () async {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
               AppFunc.myButton(
                 text: "My Courses",
                 textSize: 16,
-                func: () async{},
+                func: () async {},
                 //TODO Add functionality here
                 width: 120,
                 height: 40,

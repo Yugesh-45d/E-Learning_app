@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:async';
-
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:e_learning_app/screens/welcome_pages/onboarding_screen.dart';
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
@@ -13,19 +12,16 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: ((context) => OnboardingScreen())));
-    });
-    return Scaffold(
+    return AnimatedSplashScreen(
+      duration: 1200,
+      splash: AppFunc.myText(
+          text: "Learning App",
+          size: 44,
+          weight: FontWeight.bold,
+          font: AppFonts.primaryFont),
+      nextScreen: OnboardingScreen(),
+      splashTransition: SplashTransition.fadeTransition,
       backgroundColor: AppColors.primaryColor,
-      body: Center(
-        child: AppFunc.myText(
-            text: "Learning App",
-            size: 40,
-            weight: FontWeight.bold,
-            font: AppFonts.primaryFont),
-      ),
     );
   }
 }
