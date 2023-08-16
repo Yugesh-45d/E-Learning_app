@@ -5,6 +5,7 @@ import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AppFunc {
   //----------------------------For Normal Text---------------------------------------------
@@ -56,7 +57,7 @@ class AppFunc {
       double width = double.maxFinite,
       double height = 52,
       double textSize = 18,
-      required void Function() func}) {
+      required Future<void> Function() func,}) {
     return SizedBox(
       height: height.h,
       width: width.w,
@@ -72,8 +73,8 @@ class AppFunc {
             borderRadius: BorderRadius.circular(borderRadius.r),
           ),
         ),
-        onPressed: () {
-          func();
+        onPressed: () async{
+         await func();
         },
         child: AppFunc.myText(
           text: text,
@@ -86,18 +87,26 @@ class AppFunc {
   }
 
 //----------------------------For Other TextFields---------------------------------------------
-  static SizedBox myTextfield(
-      {required TextEditingController controller,
-      required TextInputType keyboardType,
-      required String hint}) {
+  static SizedBox myTextfield({
+    required TextEditingController controller,
+    required TextInputType keyboardType,
+    required String hint,
+  }) {
     return SizedBox(
       height: 56.h,
       width: double.maxFinite,
-      child: TextField(
+      child: TextFormField(
+        validator: (String? value) {
+          if (value!.isEmpty) {
+            return "Valid $hint is required";
+          } else {
+            return null;
+          }
+        },
         controller: controller,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          labelText: "Enter your $hint",
+          labelText: hint,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
           ),
@@ -115,12 +124,19 @@ class AppFunc {
     return SizedBox(
       height: 56.h,
       width: double.maxFinite,
-      child: TextField(
+      child: TextFormField(
+        validator: (String? value) {
+          if (value!.isEmpty) {
+            return "Password is required";
+          } else {
+            return null;
+          }
+        },
         keyboardType: TextInputType.visiblePassword,
         controller: controller,
         obscureText: !showPassword,
         decoration: InputDecoration(
-          labelText: "Enter your Password",
+          labelText: "Password",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
           ),
@@ -321,5 +337,17 @@ class AppFunc {
         ),
       ),
     );
+  }
+
+  //----------------------------For Classes Card Widget---------------------------------------------
+
+  static pickImage(ImageSource source) async {
+    final ImagePicker imagePicker = ImagePicker();
+
+    XFile? file = await imagePicker.pickImage(source: source);
+
+    if (file != null) {
+      return await file.readAsBytes();
+    }
   }
 }

@@ -60,7 +60,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Beginner",
                     height: 36,
                     width: 104,
-                    func: () {
+                    func: () async{
                       _selectOption(1);
                     },
                     textSize: 12,
@@ -71,7 +71,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Intermediate",
                     height: 36,
                     width: 104,
-                    func: () {
+                    func: () async{
                       _selectOption(2);
                     },
                     textSize: 12,
@@ -82,7 +82,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Expert",
                     height: 36,
                     width: 104,
-                    func: () {
+                    func: () async{
                       _selectOption(3);
                     },
                     textSize: 12,
@@ -114,7 +114,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
               AppFunc.mySizedbox(height: 8),
               AppFunc.myButton(
                 text: "Continue",
-                func: () {
+                func: () async{
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => MainPage()));
                 },

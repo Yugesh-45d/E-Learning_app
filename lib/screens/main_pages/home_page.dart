@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
               AppFunc.myButton(
                 text: "Book Class",
                 textSize: 16,
-                func: () {
+                func: () async{
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
               AppFunc.myButton(
                 text: "My Courses",
                 textSize: 16,
-                func: () {},
+                func: () async{},
                 //TODO Add functionality here
                 width: 120,
                 height: 40,
@@ -77,17 +77,24 @@ class HomePage extends StatelessWidget {
             child: Row(
               children: [
                 AppFunc.myCard(
-                  image: "4.png",
+                  image: "2.png",
+                  faculty: "COMPUTER SCIENCE",
+                  subject: "Programming with Js",
+                  hours: 3,
+                ),
+                AppFunc.mySizedbox(width: 4),
+                AppFunc.myCard(
+                  image: "7.png",
                   faculty: "ART & HUMANITIES",
                   subject: "Draw and paint Arts",
                   hours: 2,
                 ),
                 AppFunc.mySizedbox(width: 4),
                 AppFunc.myCard(
-                  image: "2.png",
-                  faculty: "COMPUTER SCIENCE",
-                  subject: "Programming with Js",
-                  hours: 3,
+                  image: "8.png",
+                  faculty: "PHYSICS",
+                  subject: "Quantum Mechanics",
+                  hours: 4,
                 ),
               ],
             ),

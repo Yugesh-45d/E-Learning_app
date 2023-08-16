@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
             AppFunc.mySizedbox(height: 32),
             AppFunc.myButton(
               text: "Start Learning",
-              func: () {
+              func: () async {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoginScreen()));
               },

@@ -1,5 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
+import 'dart:developer';
+
+import 'package:e_learning_app/config/auth_methods.dart';
 import 'package:e_learning_app/screens/login_pages/register_screen.dart';
 import 'package:e_learning_app/screens/main_pages/select_course_screen.dart';
 import 'package:e_learning_app/config/app_colors.dart';
@@ -17,6 +20,14 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = false;
   bool checkboxValue = false;
+
+  Future<String> login() async {
+    String result = await AuthMethods().logIn(
+        email: _emailController.text, password: _passwordController.text);
+    log(result);
+    return result;
+  }
+
   @override
   void initState() {
     _emailController = TextEditingController();
@@ -118,11 +129,20 @@ class _LoginScreenState extends State<LoginScreen> {
             AppFunc.mySizedbox(height: 24),
             AppFunc.myButton(
               text: "Login",
-              func: () {
-                Navigator.pushReplacement(
+              func: () async {
+                String result =
+                    await login(); // Wait for the storeData function to complete
+                if (result == "Sucessfully logged in") {
+                  // Assuming your signUpUser method returns "success" on success
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SelectCourseScreen()));
+                        builder: (context) => SelectCourseScreen()),
+                  );
+                } else {
+                  // Handle error case here
+                  log(result);
+                }
               },
               borderRadius: 32,
               width: 320,

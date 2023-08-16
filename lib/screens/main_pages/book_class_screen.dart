@@ -154,19 +154,22 @@ class _BookClassScreenState extends State<BookClassScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+        title: AppFunc.myText(
+          text: "BOOK YOUR CLASS",
+          color: AppColors.primaryColor,
+          weight: FontWeight.bold,
+          size: 20,
+        ),
+        elevation: 0,
+      ),
       body: Consumer<BookingProvider>(
         builder: (context, value, child) => Padding(
           padding: AppFunc.myPadding(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppFunc.myText(
-                text: "BOOK YOUR CLASS",
-                color: AppColors.primaryColor,
-                weight: FontWeight.bold,
-                size: 20,
-              ),
-              AppFunc.mySizedbox(height: 24),
               Column(
                 children: [
                   SizedBox(
@@ -290,7 +293,7 @@ class _BookClassScreenState extends State<BookClassScreen> {
                 width: 280,
                 borderRadius: 32,
                 text: "Book Class Now",
-                func: () {
+                func: () async{
                   if (checkboxValue) {
                     if (value.myClasses.any((myClass) =>
                         myClass.subject == getBookings().subject)) {

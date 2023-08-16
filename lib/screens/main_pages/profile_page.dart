@@ -76,7 +76,7 @@ class ProfilePage extends StatelessWidget {
             width: 280,
             borderRadius: 32,
             text: "Log Out",
-            func: () {
+            func: () async{
               Fluttertoast.showToast(
                   msg: "Logged out", backgroundColor: Colors.redAccent);
               Navigator.pushReplacement(context,

@@ -1,14 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/providers/booking_provider.dart';
+import 'package:e_learning_app/screens/login_pages/register_screen.dart';
 import 'package:e_learning_app/screens/main_pages/main_page.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -30,10 +35,12 @@ class MyApp extends StatelessWidget {
           title: 'E-Learning App',
           theme: ThemeData(
             fontFamily: GoogleFonts.inter().fontFamily,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
             useMaterial3: true,
           ),
-          home: SplashScreen(),
+          // home: SplashScreen(),
+          home: RegisterScreen(),
           // home: MainPage(),
           // home: Practice(),
         ),
