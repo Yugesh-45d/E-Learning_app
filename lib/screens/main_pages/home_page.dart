@@ -1,13 +1,37 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/helper_func.dart';
 import 'package:e_learning_app/screens/main_pages/book_class_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String name = '';
+  @override
+  void initState() {
+    getUserName();
+    super.initState();
+  }
+
+  getUserName() async {
+    DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    setState(() {
+      name = (snap.data() as Map<String, dynamic>)['name'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +49,7 @@ class HomePage extends StatelessWidget {
           ),
           AppFunc.mySizedbox(height: 8),
           AppFunc.myText(
-            text: "Welcome Back Rameshwor Yadav",
+            text: "Welcome Back $name",
             color: AppColors.primaryColor,
             weight: FontWeight.bold,
             font: AppFonts.primaryFont,

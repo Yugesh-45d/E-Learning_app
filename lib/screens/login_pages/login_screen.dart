@@ -28,6 +28,20 @@ class _LoginScreenState extends State<LoginScreen> {
     return result;
   }
 
+  final _passwordFocusNode = FocusNode();
+  final _emailFocusNode = FocusNode();
+
+  final _emailKey = GlobalKey<FormFieldState>();
+  final _passwordKey = GlobalKey<FormFieldState>();
+
+  void _validateUsername() {
+    _emailKey.currentState!.validate();
+  }
+
+  void _validatePassword() {
+    _passwordKey.currentState!.validate();
+  }
+
   @override
   void initState() {
     _emailController = TextEditingController();
@@ -57,120 +71,131 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+        title: AppFunc.myText(
+          text: "LOG IN",
+          size: 24,
+          color: AppColors.primaryColor,
+          weight: FontWeight.bold,
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: Padding(
-        padding: AppFunc.myPadding(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppFunc.myText(
-              text: "LOG IN",
-              color: AppColors.primaryColor,
-              weight: FontWeight.bold,
-              size: 24,
-            ),
-            AppFunc.mySizedbox(height: 8),
-            AppFunc.myText(
-              text: "Learning App",
-              color: AppColors.primaryColor,
-              weight: FontWeight.bold,
-              font: AppFonts.primaryFont,
-              size: 40,
-            ),
-            AppFunc.mySizedbox(height: 40),
-            AppFunc.myText(
-              text: "Enter your log in details to access your account",
-              color: AppColors.primaryColor,
-              weight: FontWeight.bold,
-              size: 20,
-            ),
-            AppFunc.mySizedbox(height: 32),
-            AppFunc.myTextfield(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              hint: "Email",
-            ),
-            AppFunc.mySizedbox(height: 24),
-            AppFunc.myTextfieldPassword(
-              controller: _passwordController,
-              func: showHidePassword,
-              showPassword: showPassword,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Checkbox(
-                      value: checkboxValue,
-                      onChanged: (value) {
-                        setState(() {
-                          checkboxValue = value!;
-                        });
-                      },
-                    ),
-                    AppFunc.myText(
-                      //TODO add remember me functionality
-                      text: "Remember me?",
-                      font: AppFonts.thirdFont,
-                      size: 16,
-                      color: AppColors.primaryColor,
-                    ),
-                  ],
-                ),
-                AppFunc.myText(
-                  //TODO add forget password functionality
-                  text: "Forget Password?",
-                  color: Colors.red,
-                  size: 16,
-                  font: AppFonts.thirdFont,
-                ),
-              ],
-            ),
-            AppFunc.mySizedbox(height: 24),
-            AppFunc.myButton(
-              text: "Login",
-              func: () async {
-                String result =
-                    await login(); // Wait for the storeData function to complete
-                if (result == "Sucessfully logged in") {
-                  // Assuming your signUpUser method returns "success" on success
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SelectCourseScreen()),
-                  );
-                } else {
-                  // Handle error case here
-                  log(result);
-                }
-              },
-              borderRadius: 32,
-              width: 320,
-            ),
-            AppFunc.mySizedbox(height: 40),
-            Wrap(
-              children: [
-                AppFunc.myText(
-                  text: "Don't have an account? ",
-                  color: AppColors.primaryColor,
-                  font: AppFonts.thirdFont,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => RegisterScreen())));
-                  },
-                  child: AppFunc.myText(
-                    text: "Create account",
-                    color: Colors.blue,
+        padding: AppFunc.myPadding(top: 0, bottom: 0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              AppFunc.mySizedbox(height: 8),
+              AppFunc.myText(
+                text: "Learning App",
+                color: AppColors.primaryColor,
+                weight: FontWeight.bold,
+                font: AppFonts.primaryFont,
+                size: 40,
+              ),
+              AppFunc.mySizedbox(height: 40),
+              AppFunc.myText(
+                text: "Enter your log in details to access your account",
+                color: AppColors.primaryColor,
+                weight: FontWeight.bold,
+                size: 20,
+              ),
+              AppFunc.mySizedbox(height: 32),
+              AppFunc.myTextfield(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                hint: "Email",
+                focusNode: _emailFocusNode,
+                key: _emailKey,
+              ),
+              AppFunc.mySizedbox(height: 8),
+              AppFunc.myTextfieldPassword(
+                controller: _passwordController,
+                func: showHidePassword,
+                showPassword: showPassword,
+                key: _passwordKey,
+                focusNode: _passwordFocusNode,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: checkboxValue,
+                        onChanged: (value) {
+                          setState(() {
+                            checkboxValue = value!;
+                          });
+                        },
+                      ),
+                      AppFunc.myText(
+                        //TODO add remember me functionality
+                        text: "Remember me?",
+                        font: AppFonts.thirdFont,
+                        size: 16,
+                        color: AppColors.primaryColor,
+                      ),
+                    ],
+                  ),
+                  AppFunc.myText(
+                    //TODO add forget password functionality
+                    text: "Forget Password?",
+                    color: Colors.red,
+                    size: 16,
                     font: AppFonts.thirdFont,
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              AppFunc.myButton(
+                text: "Login",
+                func: () async {
+                  _validateUsername();
+                  _validatePassword();
+                  String result =
+                      await login(); // Wait for the storeData function to complete
+                  if (result == "Sucessfully logged in") {
+                    // Assuming your signUpUser method returns "success" on success
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SelectCourseScreen()),
+                    );
+                  } else {
+                    // Handle error case here
+                    log(result);
+                  }
+                },
+                borderRadius: 32,
+                width: 320,
+              ),
+              AppFunc.mySizedbox(height: 24),
+              Wrap(
+                children: [
+                  AppFunc.myText(
+                    text: "Don't have an account? ",
+                    color: AppColors.primaryColor,
+                    font: AppFonts.thirdFont,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => RegisterScreen())));
+                    },
+                    child: AppFunc.myText(
+                      text: "Create account",
+                      color: Colors.blue,
+                      font: AppFonts.thirdFont,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

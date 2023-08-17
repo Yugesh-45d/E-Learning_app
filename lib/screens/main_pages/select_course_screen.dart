@@ -5,6 +5,7 @@ import 'package:e_learning_app/config/app_fonts.dart';
 import 'package:e_learning_app/config/helper_func.dart';
 import 'package:e_learning_app/screens/main_pages/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SelectCourseScreen extends StatefulWidget {
   const SelectCourseScreen({super.key});
@@ -60,7 +61,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Beginner",
                     height: 36,
                     width: 104,
-                    func: () async{
+                    func: () async {
                       _selectOption(1);
                     },
                     textSize: 12,
@@ -71,7 +72,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Intermediate",
                     height: 36,
                     width: 104,
-                    func: () async{
+                    func: () async {
                       _selectOption(2);
                     },
                     textSize: 12,
@@ -82,7 +83,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                     text: "Expert",
                     height: 36,
                     width: 104,
-                    func: () async{
+                    func: () async {
                       _selectOption(3);
                     },
                     textSize: 12,
@@ -90,7 +91,7 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                   ),
                 ],
               ),
-              AppFunc.mySizedbox(height: 40),
+              AppFunc.mySizedbox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -102,21 +103,36 @@ class _SelectCourseScreenState extends State<SelectCourseScreen> {
                       });
                     },
                   ),
-                  AppFunc.myText(
-                    //TODO add are you sure functionality
-                    text: "Are you sure?",
-                    font: AppFonts.thirdFont,
-                    size: 16,
-                    color: AppColors.primaryColor,
+                  Wrap(
+                    children: [
+                      AppFunc.myText(
+                        text: "Are you sure?",
+                        font: AppFonts.thirdFont,
+                        size: 16,
+                        color: AppColors.primaryColor,
+                      ),
+                      AppFunc.myText(
+                        text: "*",
+                        font: AppFonts.thirdFont,
+                        size: 16,
+                        color: Colors.red,
+                      ),
+                    ],
                   ),
                 ],
               ),
               AppFunc.mySizedbox(height: 8),
               AppFunc.myButton(
                 text: "Continue",
-                func: () async{
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => MainPage()));
+                func: () async {
+                  if (checkboxValue) {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => MainPage()));
+                  } else {
+                    Fluttertoast.showToast(
+                        backgroundColor: Colors.red,
+                        msg: "Please confirm the selected Course");
+                  }
                 },
                 borderRadius: 32,
                 width: 320,
