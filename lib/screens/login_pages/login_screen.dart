@@ -65,7 +65,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-//TODO add user authentication here with Firebase
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       AppFunc.myText(
-                        //TODO add remember me functionality
+            
                         text: "Remember me?",
                         font: AppFonts.thirdFont,
                         size: 16,
@@ -141,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   AppFunc.myText(
-                    //TODO add forget password functionality
+           
                     text: "Forget Password?",
                     color: Colors.red,
                     size: 16,

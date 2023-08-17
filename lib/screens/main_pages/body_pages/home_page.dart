@@ -40,14 +40,6 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AppFunc.mySizedbox(height: 40),
-          AppFunc.myText(
-            text: "HOME",
-            color: AppColors.primaryColor,
-            weight: FontWeight.bold,
-            size: 20,
-          ),
-          AppFunc.mySizedbox(height: 8),
           AppFunc.myText(
             text: "Welcome Back $name",
             color: AppColors.primaryColor,
@@ -67,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                       MaterialPageRoute(
                           builder: ((context) => BookClassScreen())));
                 },
-                //TODO add functionality here
+                
                 width: 120,
                 height: 40,
                 borderRadius: 8,
@@ -77,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 text: "My Courses",
                 textSize: 16,
                 func: () async {},
-                //TODO Add functionality here
+       
                 width: 120,
                 height: 40,
                 borderRadius: 8,

@@ -48,14 +48,6 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AppFunc.mySizedbox(height: 40),
-          AppFunc.myText(
-            text: "MY ACCOUNT",
-            color: AppColors.primaryColor,
-            weight: FontWeight.bold,
-            size: 20,
-          ),
-          AppFunc.mySizedbox(height: 24),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
@@ -70,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   leading: CircleAvatar(
                     radius: 32.r,
                     child: AppFunc.myLocalImage(image: '2.png'),
-                    // child: Image.memory(image!),
+               
                   ),
                   title: AppFunc.myText(
                     text: name,

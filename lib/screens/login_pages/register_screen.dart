@@ -249,7 +249,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   AppFunc.myText(
-                    //TODO add remember me functionality
+                    
                     text: "Remember me?",
                     font: AppFonts.thirdFont,
                     size: 16,

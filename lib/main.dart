@@ -39,11 +39,23 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
             useMaterial3: true,
           ),
-          // home: SplashScreen(),
-          // home: RegisterScreen(),
-          home: MainPage(),
+          home: SplashScreen(),
         ),
       ),
     );
   }
 }
+
+//----------------THINGS TO DO IN THE APP----------------
+/*
+1. Forget Password wala page banaune
+2. MainPage ma MyCourses wala page banaune ra tesma additional functionalities haru add grne
+2. Provider bata Firebase ko data call garne ani matra tyo data use grne sab screens ma
+3. Profile Page ma vaeko photo change grnu paro, Firebase Storage ko help le / AuthMethods ma vaeko photoUrl le
+4. User vanne banayo AuthMethods ma (Instagram tutorial YT ko reference liyera)
+5. AuthStateChanges/ Shared Preferences ko help le Login/Register Page ma remember me functionality add grne
+6. My classes ma add vaeko class haru Firebase ma store grne so that feri login grda tyo classes ti rahi rakhos so
+
+*/
+
+
