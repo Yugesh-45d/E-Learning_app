@@ -37,85 +37,85 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: AppFunc.myPadding(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AppFunc.myText(
-            text: "Welcome Back $name",
-            color: AppColors.primaryColor,
-            weight: FontWeight.bold,
-            font: AppFonts.primaryFont,
-            size: 40,
-          ),
-          AppFunc.mySizedbox(height: 32),
-          Row(
-            children: [
-              AppFunc.myButton(
-                text: "Book Class",
-                textSize: 16,
-                func: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => BookClassScreen())));
-                },
-                
-                width: 120,
-                height: 40,
-                borderRadius: 8,
-              ),
-              AppFunc.mySizedbox(width: 16),
-              AppFunc.myButton(
-                text: "My Courses",
-                textSize: 16,
-                func: () async {},
-       
-                width: 120,
-                height: 40,
-                borderRadius: 8,
-              ),
-            ],
-          ),
-          AppFunc.mySizedbox(height: 32),
-          SizedBox(
-            width: double.maxFinite,
-            child: AppFunc.myText(
-              alignment: TextAlign.left,
-              text: "Last Classes",
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppFunc.myText(
+              text: "Welcome Back $name",
               color: AppColors.primaryColor,
               weight: FontWeight.bold,
-              size: 28,
+              font: AppFonts.primaryFont,
+              size: 40,
             ),
-          ),
-          AppFunc.mySizedbox(height: 8),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+            AppFunc.mySizedbox(height: 32),
+            Row(
               children: [
-                AppFunc.myCard(
-                  image: "2.png",
-                  faculty: "COMPUTER SCIENCE",
-                  subject: "Programming with Js",
-                  hours: 3,
+                AppFunc.myButton(
+                  text: "Book Class",
+                  textSize: 16,
+                  func: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => BookClassScreen())));
+                  },
+                  width: 120,
+                  height: 40,
+                  borderRadius: 8,
                 ),
-                AppFunc.mySizedbox(width: 4),
-                AppFunc.myCard(
-                  image: "7.png",
-                  faculty: "ART & HUMANITIES",
-                  subject: "Draw and paint Arts",
-                  hours: 2,
-                ),
-                AppFunc.mySizedbox(width: 4),
-                AppFunc.myCard(
-                  image: "8.png",
-                  faculty: "PHYSICS",
-                  subject: "Quantum Mechanics",
-                  hours: 4,
+                AppFunc.mySizedbox(width: 16),
+                AppFunc.myButton(
+                  text: "My Courses",
+                  textSize: 16,
+                  func: () async {},
+                  width: 120,
+                  height: 40,
+                  borderRadius: 8,
                 ),
               ],
             ),
-          ),
-        ],
+            AppFunc.mySizedbox(height: 32),
+            SizedBox(
+              width: double.maxFinite,
+              child: AppFunc.myText(
+                alignment: TextAlign.left,
+                text: "Last Classes",
+                color: AppColors.primaryColor,
+                weight: FontWeight.bold,
+                size: 28,
+              ),
+            ),
+            AppFunc.mySizedbox(height: 8),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  AppFunc.myCard(
+                    image: "2.png",
+                    faculty: "COMPUTER SCIENCE",
+                    subject: "Programming with Js",
+                    hours: 3,
+                  ),
+                  AppFunc.mySizedbox(width: 4),
+                  AppFunc.myCard(
+                    image: "7.png",
+                    faculty: "ART & HUMANITIES",
+                    subject: "Draw and paint Arts",
+                    hours: 2,
+                  ),
+                  AppFunc.mySizedbox(width: 4),
+                  AppFunc.myCard(
+                    image: "8.png",
+                    faculty: "PHYSICS",
+                    subject: "Quantum Mechanics",
+                    hours: 4,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

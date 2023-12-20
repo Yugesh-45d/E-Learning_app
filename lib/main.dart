@@ -2,8 +2,6 @@
 
 import 'package:e_learning_app/config/app_colors.dart';
 import 'package:e_learning_app/providers/booking_provider.dart';
-import 'package:e_learning_app/screens/login_pages/register_screen.dart';
-import 'package:e_learning_app/screens/main_pages/main_page.dart';
 import 'package:e_learning_app/screens/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

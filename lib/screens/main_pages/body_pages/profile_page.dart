@@ -34,11 +34,12 @@ class _ProfilePageState extends State<ProfilePage> {
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
-    setState(() {
-      name = (snap.data() as Map<String, dynamic>)['name'];
-      username = (snap.data() as Map<String, dynamic>)['username'];
-      // image = (snap.data() as Map<String, dynamic>)['photoUrl'];
-    });
+    setState(
+      () {
+        name = (snap.data() as Map<String, dynamic>)['name'];
+        username = (snap.data() as Map<String, dynamic>)['username'];
+      },
+    );
   }
 
   @override
@@ -62,7 +63,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   leading: CircleAvatar(
                     radius: 32.r,
                     child: AppFunc.myLocalImage(image: '2.png'),
-               
                   ),
                   title: AppFunc.myText(
                     text: name,

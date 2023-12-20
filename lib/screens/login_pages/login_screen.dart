@@ -65,7 +65,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       AppFunc.myText(
-            
                         text: "Remember me?",
                         font: AppFonts.thirdFont,
                         size: 16,
@@ -140,7 +138,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   AppFunc.myText(
-           
                     text: "Forget Password?",
                     color: Colors.red,
                     size: 16,
